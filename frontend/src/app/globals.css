@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 3 7 18;
+    --foreground: 243 244 246;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(3, 7, 18);
+    color: rgb(243, 244, 246);
+  }
+}
+
+@layer utilities {
+  /* Custom scrollbar for dark theme */
+  .scrollbar-dark::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-track {
+    background: rgb(17, 24, 39);
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background: rgb(55, 65, 81);
+    border-radius: 3px;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: rgb(75, 85, 99);
+  }
+
+  /* Global scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(17, 24, 39);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(55, 65, 81);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(75, 85, 99);
+  }
+
+  /* Glassmorphism effect */
+  .glass {
+    background: rgba(17, 24, 39, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #818cf8, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Animated border */
+  .border-glow {
+    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.1);
+  }
+
+  /* Table alternating rows */
+  .table-row-alt:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Status dot */
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .status-dot-active {
+    background-color: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+  }
+
+  .status-dot-idle {
+    background-color: #6b7280;
+  }
+
+  .status-dot-running {
+    background-color: #3b82f6;
+    box-shadow: 0 0 6px #3b82f6;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .status-dot-error {
+    background-color: #ef4444;
+    box-shadow: 0 0 6px #ef4444;
+  }
+}
+
+@layer components {
+  /* Card base */
+  .card {
+    @apply bg-gray-900 border border-gray-800 rounded-xl p-6;
+  }
+
+  /* Input base */
+  .input-dark {
+    @apply bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-gray-100 placeholder-gray-500
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  /* Select base */
+  .select-dark {
+    @apply bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-gray-100
+           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent
+           transition-all duration-200;
+  }
+}
+
+/* Recharts dark theme overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(55, 65, 81, 0.5) !important;
+}
+
+.recharts-text {
+  fill: rgb(156, 163, 175) !important;
+}
+
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background-color: rgb(17, 24, 39) !important;
+  border: 1px solid rgb(55, 65, 81) !important;
+  border-radius: 8px !important;
+}
+
+/* Skeleton animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(31, 41, 55) 25%,
+    rgb(55, 65, 81) 50%,
+    rgb(31, 41, 55) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
