@@ -21,6 +21,9 @@ SessionLocal = async_sessionmaker(
     autoflush=False,
 )
 
+# Alias for scripts and external tooling that expect AsyncSessionLocal
+AsyncSessionLocal = SessionLocal
+
 
 class Base(DeclarativeBase):
     pass
